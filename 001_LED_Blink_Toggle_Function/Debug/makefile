@@ -38,34 +38,34 @@ $(wildcard ../makefile.init) \
 $(wildcard ../makefile.targets) \
 
 
-BUILD_ARTIFACT_NAME := LED_Blink_Toggle_Function
+BUILD_ARTIFACT_NAME := 001_LED_Blink_Toggle_Function
 BUILD_ARTIFACT_EXTENSION := elf
 BUILD_ARTIFACT_PREFIX :=
 BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ARTIFACT_EXTENSION),.$(BUILD_ARTIFACT_EXTENSION),)
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXECUTABLES += \
-LED_Blink_Toggle_Function.elf \
+001_LED_Blink_Toggle_Function.elf \
 
 MAP_FILES += \
-LED_Blink_Toggle_Function.map \
+001_LED_Blink_Toggle_Function.map \
 
 SIZE_OUTPUT += \
 default.size.stdout \
 
 OBJDUMP_LIST += \
-LED_Blink_Toggle_Function.list \
+001_LED_Blink_Toggle_Function.list \
 
 
 # All Target
 all: main-build
 
 # Main-build Target
-main-build: LED_Blink_Toggle_Function.elf secondary-outputs
+main-build: 001_LED_Blink_Toggle_Function.elf secondary-outputs
 
 # Tool invocations
-LED_Blink_Toggle_Function.elf LED_Blink_Toggle_Function.map: $(OBJS) $(USER_OBJS) C:\STM32_HAL\LED_Blink_Toggle_Function\STM32F407VGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "LED_Blink_Toggle_Function.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\STM32_HAL\LED_Blink_Toggle_Function\STM32F407VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="LED_Blink_Toggle_Function.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+001_LED_Blink_Toggle_Function.elf 001_LED_Blink_Toggle_Function.map: $(OBJS) $(USER_OBJS) C:\STM32_HAL\001_LED_Blink_Toggle_Function\STM32F407VGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "001_LED_Blink_Toggle_Function.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\STM32_HAL\001_LED_Blink_Toggle_Function\STM32F407VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="001_LED_Blink_Toggle_Function.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -74,14 +74,14 @@ default.size.stdout: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	@echo 'Finished building: $@'
 	@echo ' '
 
-LED_Blink_Toggle_Function.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "LED_Blink_Toggle_Function.list"
+001_LED_Blink_Toggle_Function.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "001_LED_Blink_Toggle_Function.list"
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) LED_Blink_Toggle_Function.elf LED_Blink_Toggle_Function.list LED_Blink_Toggle_Function.map default.size.stdout
+	-$(RM) 001_LED_Blink_Toggle_Function.elf 001_LED_Blink_Toggle_Function.list 001_LED_Blink_Toggle_Function.map default.size.stdout
 	-@echo ' '
 
 secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST)
