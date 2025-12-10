@@ -106,7 +106,7 @@ int main(void)
   MX_USB_HOST_Init();
   MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
-
+  HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_2);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -119,8 +119,13 @@ int main(void)
     /* USER CODE BEGIN 3 */
     TIM3->CCR1 = 10;
     HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
-    TIM3->CCR2 = 50;
-    HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_2);
+    __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_2,50);
+    HAL_Delay(5000);
+    __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_2,99);
+    HAL_Delay(5000);
+
+
+
   }
   /* USER CODE END 3 */
 }
