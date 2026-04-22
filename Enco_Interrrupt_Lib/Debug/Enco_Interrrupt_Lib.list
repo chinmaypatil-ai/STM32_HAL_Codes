@@ -29,25 +29,25 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
  12 .ARM.attributes 00000030  00000000  00000000  0000c07c  2**0
                   CONTENTS, READONLY
- 13 .debug_info   0001ce21  00000000  00000000  0000c0ac  2**0
+ 13 .debug_info   0001cdfb  00000000  00000000  0000c0ac  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 14 .debug_abbrev 0000424c  00000000  00000000  00028ecd  2**0
+ 14 .debug_abbrev 00004220  00000000  00000000  00028ea7  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 15 .debug_aranges 000018e0  00000000  00000000  0002d120  2**3
+ 15 .debug_aranges 000018d8  00000000  00000000  0002d0c8  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_rnglists 00001362  00000000  00000000  0002ea00  2**0
+ 16 .debug_rnglists 0000135c  00000000  00000000  0002e9a0  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_macro  0002573e  00000000  00000000  0002fd62  2**0
+ 17 .debug_macro  0002573e  00000000  00000000  0002fcfc  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_line   0002148b  00000000  00000000  000554a0  2**0
+ 18 .debug_line   00021472  00000000  00000000  0005543a  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .debug_str    000d6702  00000000  00000000  0007692b  2**0
+ 19 .debug_str    000d6702  00000000  00000000  000768ac  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 20 .comment      00000043  00000000  00000000  0014d02d  2**0
+ 20 .comment      00000043  00000000  00000000  0014cfae  2**0
                   CONTENTS, READONLY
- 21 .debug_frame  00006f80  00000000  00000000  0014d070  2**2
+ 21 .debug_frame  00006f58  00000000  00000000  0014cff4  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 22 .debug_line_str 0000004f  00000000  00000000  00153ff0  2**0
+ 22 .debug_line_str 0000004f  00000000  00000000  00153f4c  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -623,38 +623,39 @@ int main(void)
  800069a:	2100      	movs	r1, #0
  800069c:	4618      	mov	r0, r3
  800069e:	f009 fa97 	bl	8009bd0 <memset>
+
+  update_encoder(&enc_instance, &htim3);
+ 80006a2:	4916      	ldr	r1, [pc, #88]	@ (80006fc <main+0x94>)
+ 80006a4:	4816      	ldr	r0, [pc, #88]	@ (8000700 <main+0x98>)
+ 80006a6:	f7ff ff5b 	bl	8000560 <update_encoder>
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
     /* USER CODE END WHILE */
     MX_USB_HOST_Process();
- 80006a2:	f008 fed3 	bl	800944c <MX_USB_HOST_Process>
+ 80006aa:	f008 fecf 	bl	800944c <MX_USB_HOST_Process>
 
     /* USER CODE BEGIN 3 */
     timer_counter = __HAL_TIM_GET_COUNTER(&htim3);
- 80006a6:	4b15      	ldr	r3, [pc, #84]	@ (80006fc <main+0x94>)
- 80006a8:	681b      	ldr	r3, [r3, #0]
- 80006aa:	6a5b      	ldr	r3, [r3, #36]	@ 0x24
- 80006ac:	b29a      	uxth	r2, r3
- 80006ae:	4b14      	ldr	r3, [pc, #80]	@ (8000700 <main+0x98>)
- 80006b0:	801a      	strh	r2, [r3, #0]
-    	        update_encoder(&enc_instance, &htim3);
- 80006b2:	4912      	ldr	r1, [pc, #72]	@ (80006fc <main+0x94>)
- 80006b4:	4813      	ldr	r0, [pc, #76]	@ (8000704 <main+0x9c>)
- 80006b6:	f7ff ff53 	bl	8000560 <update_encoder>
+ 80006ae:	4b13      	ldr	r3, [pc, #76]	@ (80006fc <main+0x94>)
+ 80006b0:	681b      	ldr	r3, [r3, #0]
+ 80006b2:	6a5b      	ldr	r3, [r3, #36]	@ 0x24
+ 80006b4:	b29a      	uxth	r2, r3
+ 80006b6:	4b13      	ldr	r3, [pc, #76]	@ (8000704 <main+0x9c>)
+ 80006b8:	801a      	strh	r2, [r3, #0]
     	        encoder_position = enc_instance.position;
- 80006ba:	4b12      	ldr	r3, [pc, #72]	@ (8000704 <main+0x9c>)
+ 80006ba:	4b11      	ldr	r3, [pc, #68]	@ (8000700 <main+0x98>)
  80006bc:	e9d3 2302 	ldrd	r2, r3, [r3, #8]
  80006c0:	4b11      	ldr	r3, [pc, #68]	@ (8000708 <main+0xa0>)
  80006c2:	601a      	str	r2, [r3, #0]
     	        encoder_velocity = enc_instance.velocity;
- 80006c4:	4b0f      	ldr	r3, [pc, #60]	@ (8000704 <main+0x9c>)
+ 80006c4:	4b0e      	ldr	r3, [pc, #56]	@ (8000700 <main+0x98>)
  80006c6:	f9b3 2000 	ldrsh.w	r2, [r3]
  80006ca:	4b10      	ldr	r3, [pc, #64]	@ (800070c <main+0xa4>)
  80006cc:	801a      	strh	r2, [r3, #0]
     sprintf(message,"Counter is: %d Position: %ld  Velocity: %d  \n\r",timer_counter,encoder_position,encoder_velocity);
- 80006ce:	4b0c      	ldr	r3, [pc, #48]	@ (8000700 <main+0x98>)
+ 80006ce:	4b0d      	ldr	r3, [pc, #52]	@ (8000704 <main+0x9c>)
  80006d0:	881b      	ldrh	r3, [r3, #0]
  80006d2:	4619      	mov	r1, r3
  80006d4:	4b0c      	ldr	r3, [pc, #48]	@ (8000708 <main+0xa0>)
@@ -674,11 +675,11 @@ int main(void)
  80006f2:	f005 f8cf 	bl	8005894 <HAL_UART_Transmit>
     MX_USB_HOST_Process();
  80006f6:	bf00      	nop
- 80006f8:	e7d3      	b.n	80006a2 <main+0x3a>
+ 80006f8:	e7d7      	b.n	80006aa <main+0x42>
  80006fa:	bf00      	nop
  80006fc:	200001ac 	.word	0x200001ac
- 8000700:	20000244 	.word	0x20000244
- 8000704:	200000a0 	.word	0x200000a0
+ 8000700:	200000a0 	.word	0x200000a0
+ 8000704:	20000244 	.word	0x20000244
  8000708:	20000240 	.word	0x20000240
  800070c:	2000023c 	.word	0x2000023c
  8000710:	0800a38c 	.word	0x0800a38c

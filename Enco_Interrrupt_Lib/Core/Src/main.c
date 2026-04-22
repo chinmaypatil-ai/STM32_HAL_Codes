@@ -115,7 +115,7 @@ int main(void)
   /* USER CODE BEGIN 2 */
   char message[200]={'\0'};
 
-
+  update_encoder(&enc_instance, &htim3);
 
   /* USER CODE END 2 */
 
@@ -128,7 +128,6 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
     timer_counter = __HAL_TIM_GET_COUNTER(&htim3);
-    	        update_encoder(&enc_instance, &htim3);
     	        encoder_position = enc_instance.position;
     	        encoder_velocity = enc_instance.velocity;
     sprintf(message,"Counter is: %d Position: %ld  Velocity: %d  \n\r",timer_counter,encoder_position,encoder_velocity);
